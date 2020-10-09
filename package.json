@@ -1,0 +1,13 @@
+{
+  "name": "husky-commitmsg-prefixer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "shunk-py <shun.kimura@integritis.io>",
+  "license": "MIT",
+  "dependencies": {
+    "husky": "^4.3.0"
+  },
+  "husky": {
+    "pre-commit": "echo $HUSKY_GIT_PARAMS"
+  }
+}
