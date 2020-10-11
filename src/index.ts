@@ -1,13 +1,10 @@
-const num: number = +process.argv[2];
-console.log(fizzbuzz(num));
+import * as fs from 'fs';
 
-function fizzbuzz(num: number): string {
-  if (num % 15 == 0) {
-    return 'FizzBuzz';
-  } else if (num % 3 == 0) {
-    return 'Fizz';
-  } else if (num % 5 == 0) {
-    return 'Buzz';
-  }
-  return num.toString();
+// get 1st argument
+const msgFilePath: string = process.argv[2];
+insertGitMessage(msgFilePath);
+
+function insertGitMessage(msgFilePath: string): void {
+  const message = fs.readFileSync(msgFilePath, 'utf-8');
+  console.log('received message: ' + message);
 }
