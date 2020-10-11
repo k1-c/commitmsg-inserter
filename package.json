@@ -4,25 +4,41 @@
   "main": "index.js",
   "author": "shunk-py <shun.kimura@integritis.io>",
   "license": "MIT",
+  "bin": {
+    "prefixer": "./bin/prefixer.js"
+  },
   "scripts": {
+    "lint": "eslint \"./src/*.{js,ts}\"",
+    "lintfix": "eslint \"./src/*.{js,ts}\" --fix",
     "build": "webpack",
     "prepare": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.dev.js --watch"
   },
-  "bin": {
-    "prefixer": "./bin/prefixer.js"
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint"
+    ]
   },
   "husky": {
     "hooks": {
-      "commit-msg": "echo ${HUSKY_GIT_PARAMS}"
+      "pre-commit": "lint-staged"
     }
   },
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^14.11.8",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
     "ts-loader": "^8.0.4",
     "typescript": "^4.0.3",
+    "typescript-eslint-parser": "^22.0.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-merge": "^5.2.0"
